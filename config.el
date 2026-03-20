@@ -14,7 +14,8 @@
        :desc "Open vterm here"            "v" #'+vterm/here
        :desc "Open eshell here"           "e" #'+eshell/here))
 
-(setq doom-theme 'tron-legacy) ;; doom theme
+;; (setq doom-theme 'tron-legacy) ;; doom theme
+(setq doom-theme 'doom-nord) ;; doom theme
 (setq doom-font (font-spec :family "IBM Plex Mono" :size 16)) ;; doom font
 (setq display-line-numbers-type 'relative) ;; relative numbers
 (setq confirm-kill-emacs nil) ;; don't confirm on emacs exit
