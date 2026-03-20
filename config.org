@@ -1,0 +1,119 @@
+#+title: Config
+
+* Default Config
+#+begin_src emacs-lisp
+(setq user-full-name "Omar Mohamed"
+      user-mail-address "omarcoptan9@gmail.com")
+
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
+#+end_src
+
+* Keymaps
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("t" . "Toggle")
+       :desc "Toggle vterm split"         "v" #'+vterm/toggle
+       :desc "Toggle treemacs"            "t" #'+treemacs/toggle
+       :desc "Toggle eshell"              "e" #'+eshell/toggle))
+
+(map! :leader
+      (:prefix ("o" . "Open")
+       :desc "Open vterm here"            "v" #'+vterm/here
+       :desc "Open eshell here"           "e" #'+eshell/here))
+#+end_src
+
+* Doom Settings
+#+begin_src emacs-lisp
+(setq doom-theme 'tron-legacy) ;; doom theme
+(setq doom-font (font-spec :family "IBM Plex Mono" :size 16)) ;; doom font
+(setq display-line-numbers-type 'relative) ;; relative numbers
+(setq confirm-kill-emacs nil) ;; don't confirm on emacs exit
+#+end_src
+
+* Org stuff
+#+begin_src emacs-lisp
+(setq org-directory "~/docs/notes/org/")
+(setq org-modern-table-vertical 1)
+(setq org-modern-table t)
+(add-hook 'org-mode-hook #'hl-todo-mode)
+
+(setq org-roam-directory org-directory)
+#+end_src
+
+* Fix Wayland Clipboard
+#+begin_src emacs-lisp
+(when (getenv "WAYLAND_DISPLAY")
+  (setq interprogram-paste-function
+        (lambda ()
+                (shell-command-to-string "wl-paste -n | tr -d '\r'"))))
+#+end_src
+
+* Keep TRAMP Connection Alive
+#+begin_src emacs-lisp
+(setq tramp-use-ssh-controlmaster-options nil)
+(customize-set-variable 'tramp-ssh-controlmaster-options
+                        "-o ControlMaster=auto -o ControlPath='tramp.%%r@%%h:%%p' -o ControlPersist=yes")
+#+end_src
+
+* Corfu
+#+begin_src emacs-lisp
+(after! corfu
+  (setq corfu-auto t
+        corfu-auto-delay 0.0
+        corfu-auto-prefix 1)
+
+  ;; Merge snippets into the completion list
+  (add-hook 'lsp-mode-hook
+            (lambda ()
+              (setq-local completion-at-point-functions
+                          (list (cape-capf-super
+                                 #'lsp-completion-at-point
+                                 #'yasnippet-capf
+                                 #'cape-file))))))
+#+end_src
+
+* Dashboard
+#+begin_src emacs-lisp
+(use-package! dashboard
+  :init
+   (setq initial-buffer-choice 'dashboard-open)
+  :config
+   (dashboard-setup-startup-hook)
+   (setq doom-fallback-buffer-name "*dashboard*")
+   (add-hook 'doom-enter-frame-hook #'dashboard-open)
+   (setq dashboard-startup-banner 'logo)
+   (setq dashboard-banner-logo-title "Greetings, hack!")
+   (setq dashboard-set-heading-icons t)
+   (setq dashboard-footer-icon "☠")
+   (setq dashboard-footer-messages '("Eat, Sleep, Hack, Repeat...")))
+#+end_src
+
+* Evil Options
+#+begin_src emacs-lisp
+(setq evil-default-cursor 'box
+      evil-normal-state-cursor 'box
+      evil-insert-state-cursor 'box
+      evil-visual-state-cursor 'box
+      evil-vsplit-window-right t
+      evil-split-window-below t
+      evil-undo-system 'undo-redo)
+#+end_src
+
+* LSP Mode Optimization
+#+begin_src emacs-lisp
+(after! flycheck
+  (setq flycheck-idle-change-delay 0.1))
+
+(after! lsp-mode
+  (setq lsp-idle-delay 0.1
+        lsp-completion-enable-additional-text-edit t
+        lsp-modeline-code-actions-enable t
+        lsp-auto-guess-root t))
+#+end_src
+
+* Solaire Mode
+#+begin_src emacs-lisp
+(after! solaire-mode
+  (custom-set-faces!
+    `(solaire-default-face :background ,(doom-color 'bg))))
+#+end_src
