@@ -20,12 +20,14 @@
 (setq display-line-numbers-type 'relative) ;; relative numbers
 (setq confirm-kill-emacs nil) ;; don't confirm on emacs exit
 
+(when (eq system-type 'android)
+  (setq explicit-shell-file-name "/data/data/com.termux/files/usr/bin/fish")
+  (setq vterm-shell "/data/data/com.termux/files/usr/bin/fish"))
+
 (setq org-directory "~/docs/notes/org/")
 (setq org-modern-table-vertical 1)
 (setq org-modern-table t)
 (add-hook 'org-mode-hook #'hl-todo-mode)
-
-(setq org-roam-directory org-directory)
 
 (when (getenv "WAYLAND_DISPLAY")
   (setq interprogram-paste-function
