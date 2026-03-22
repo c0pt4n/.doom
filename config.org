@@ -1,5 +1,19 @@
 #+title: Config
 
+* Table of Contents :toc:
+- [[#default-config][Default Config]]
+- [[#keymaps][Keymaps]]
+- [[#doom-settings][Doom Settings]]
+- [[#org-stuff][Org stuff]]
+- [[#wayland-clipboard][Wayland Clipboard]]
+- [[#keep-tramp-connection-alive][Keep TRAMP Connection Alive]]
+- [[#corfu][Corfu]]
+- [[#dashboard][Dashboard]]
+- [[#evil-options][Evil Options]]
+- [[#lsp-mode-optimization][LSP Mode Optimization]]
+- [[#solaire-mode][Solaire Mode]]
+- [[#ui-tweaks][UI Tweaks]]
+
 * Default Config
 #+begin_src emacs-lisp
 (setq user-full-name "Omar Mohamed"
