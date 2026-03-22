@@ -4,6 +4,11 @@
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
 
 (map! :leader
+      :desc "Yank to clipboard"           "y" "\"+y"
+      :desc "Delete to clipboard"         "d" "\"+d"
+      :desc "Paste from clipboard"        "p" "\"+p")
+
+(map! :leader
       (:prefix ("t" . "Toggle")
        :desc "Toggle vterm split"         "v" #'+vterm/toggle
        :desc "Toggle treemacs"            "t" #'+treemacs/toggle
