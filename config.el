@@ -30,9 +30,10 @@
 (add-hook 'org-mode-hook #'hl-todo-mode)
 
 (when (getenv "WAYLAND_DISPLAY")
-  (setq interprogram-paste-function
-        (lambda ()
-                (shell-command-to-string "wl-paste -n | tr -d '\r'"))))
+  ;; Fix "The kill is not a (set of) trees" and clipboard hangs on PGTK/Wayland
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+  ;; Ensure the coding system is strictly UTF-8 for clipboard operations
+  (set-selection-coding-system 'utf-8))
 
 (setq tramp-use-ssh-controlmaster-options nil)
 (customize-set-variable 'tramp-ssh-controlmaster-options
@@ -71,6 +72,8 @@
       evil-visual-state-cursor 'box
       evil-vsplit-window-right t
       evil-split-window-below t
+      select-enable-clipboard nil
+      select-enable-primary nil
       evil-undo-system 'undo-redo)
 
 (after! flycheck
