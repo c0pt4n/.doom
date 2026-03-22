@@ -88,3 +88,5 @@
 (after! solaire-mode
   (custom-set-faces!
     `(solaire-default-face :background ,(doom-color 'bg))))
+
+(add-to-list 'default-frame-alist '(undecorated . t))

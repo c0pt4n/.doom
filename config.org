@@ -137,3 +137,9 @@
   (custom-set-faces!
     `(solaire-default-face :background ,(doom-color 'bg))))
 #+end_src
+
+* UI Tweaks
+
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(undecorated . t))
+#+end_src
