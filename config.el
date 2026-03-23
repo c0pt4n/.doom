@@ -63,15 +63,16 @@
 (use-package! dashboard
   :init
    (setq initial-buffer-choice 'dashboard-open)
-  :config
-   (dashboard-setup-startup-hook)
    (setq doom-fallback-buffer-name "*dashboard*")
    (add-hook 'doom-enter-frame-hook #'dashboard-open)
    (setq dashboard-startup-banner 'logo)
    (setq dashboard-banner-logo-title "Greetings, hack!")
    (setq dashboard-set-heading-icons t)
    (setq dashboard-footer-icon "☠")
-   (setq dashboard-footer-messages '("Eat, Sleep, Hack, Repeat...")))
+   (setq dashboard-footer-messages '("Eat, Sleep, Hack, Repeat..."))
+   (setq initial-scratch-message nil)
+  :config
+   (dashboard-setup-startup-hook))
 
 (setq evil-default-cursor 'box
       evil-normal-state-cursor 'box
