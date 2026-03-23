@@ -97,3 +97,4 @@
     `(solaire-default-face :background ,(doom-color 'bg))))
 
 (add-to-list 'default-frame-alist '(undecorated . t))
+(setq scroll-margin 8)

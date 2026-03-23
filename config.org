@@ -149,4 +149,5 @@
 
 #+begin_src emacs-lisp
 (add-to-list 'default-frame-alist '(undecorated . t))
+(setq scroll-margin 8)
 #+end_src
