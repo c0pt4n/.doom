@@ -5,8 +5,7 @@
 
 (map! :leader
       :desc "Yank to clipboard"           "y" "\"+y"
-      :desc "Delete to clipboard"         "d" "\"+d"
-      :desc "Paste from clipboard"        "p" #'clipboard-yank)
+      :desc "Delete to clipboard"         "d" "\"+d")
 
 (evil-define-key 'insert global-map (kbd "C-v") 'clipboard-yank)
 
