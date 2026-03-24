@@ -35,6 +35,7 @@
 (setq org-modern-table-vertical 1)
 (setq org-modern-table t)
 (add-hook 'org-mode-hook #'hl-todo-mode)
+(add-hook 'org-mode-hook (lambda() (org-bullets-mode 1)))
 
 (when (getenv "WAYLAND_DISPLAY")
   ;; Fix "The kill is not a (set of) trees" and clipboard hangs on PGTK/Wayland

@@ -62,6 +62,7 @@
 (setq org-modern-table-vertical 1)
 (setq org-modern-table t)
 (add-hook 'org-mode-hook #'hl-todo-mode)
+(add-hook 'org-mode-hook (lambda() (org-bullets-mode 1)))
 #+end_src
 
 * Wayland Clipboard

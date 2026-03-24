@@ -54,3 +54,4 @@
 ;; (unpin! t)
 (package! dashboard)
 (package! tron-legacy-theme)
+(package! org-bullets)
