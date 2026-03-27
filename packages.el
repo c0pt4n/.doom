@@ -55,3 +55,4 @@
 (package! dashboard)
 (package! tron-legacy-theme)
 (package! org-bullets)
+(package! nerd-icons-dired)

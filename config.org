@@ -55,6 +55,12 @@
   (setq vterm-shell "/data/data/com.termux/files/usr/bin/fish"))
 #+end_src
 
+* Dired
+#+begin_src emacs-lisp
+(after! dired
+  (add-hook 'dired-mode-hook #'nerd-icons-dired-mode))
+#+end_src
+
 * Org stuff
 #+begin_src emacs-lisp
 (setq org-directory "~/docs/notes/org/")

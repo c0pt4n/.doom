@@ -30,6 +30,9 @@
   (setq explicit-shell-file-name "/data/data/com.termux/files/usr/bin/fish")
   (setq vterm-shell "/data/data/com.termux/files/usr/bin/fish"))
 
+(after! dired
+  (add-hook 'dired-mode-hook #'nerd-icons-dired-mode))
+
 (setq org-directory "~/docs/notes/org/")
 (setq org-modern-table-vertical 1)
 (setq org-modern-table t)
